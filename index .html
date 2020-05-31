@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Emel Digital</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script src="jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="lightbox.js" type="text/javascript"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700,600italic,700italic,800' rel='stylesheet' type='text/css'>
+<link href='https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css' rel='stylesheet' type='text/css'>
+<link href='lightbox.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('a[href*=#]:not([href=#])').click(function() {
+    	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      		var target = $(this.hash);
+      		target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      		if (target.length) {
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 1000);
+				return false;
+      		}
+    	}
+  });
+	
+	// HAND ANIMATION
+	flag = false;
+   	$(window).scroll(function() {
+       var scrollVal = $(this).scrollTop();	   
+	  // console.log(flag)
+        if ((scrollVal > 650) && (flag==false)) {
+			flag = true;
+			$('.hand').animate({top:185}, 1500, function(){
+				$('.hand').clearQueue();
+					$('.hand').stop();
+					$(".weare").animate({left: '0px' }, {queue:false, duration:2700, easing:'easeOutSine'});
+				$('.hand').animate({left:570}, 2700, function(){						
+								
+					$('.hand').animate({top:280}, 1000, function(){
+						$(".professionals").animate({left: '0px' }, {queue:false, duration:2700, easing:'easeOutSine'});
+						$('.hand').animate({left:-55}, 3000, function(){
+							 //$('.hand').clearQueue();
+							 //$('.hand').stop();
+							 $('.weare').animate({top:60}, 1000);
+							 $('.professionals').animate({top:140}, 1000);
+							 $('.about').fadeIn(1000);
+						});
+					});
+				});
+			});
+		}
+	});
+	
+	// CLOUD ANIMATION
+	jQuery.fn.loop = function (flag1,duration)
+	{
+		var winwidth = $( window ).width()+200;
+		var leftval = $(this).offset().left;
+		//console.log(parseInt($(this).css('left')));
+		if((flag1==false))
+		{
+        	$(this).css({left:-200});
+		}
+			
+        $(this).animate ({
+            left: '+='+winwidth,
+        }, duration, 'linear', function() {
+            $(this).loop(false,duration);
+        });
+    }
+	
+    $('.cloud1').loop(true,30000);
+	$('.cloud2').loop(true,40000);
+	$('.cloud3').loop(true,25000);
+	$('.cloud4').loop(true,22000);
+	$('.cloud5').loop(true,60000);
+	$('.cloud6').loop(true,70000);
+	
+ 	$('.car').loop(true,13000);
+	
+	// IMAGE TOOL TIP
+	$('#designs li a').hover(function(){
+        // Hover over code
+        var title = $(this).attr('title');
+		var img = '<img src="'+title+'" alt="thumb"/>';
+        $(this).data('tipText', title).removeAttr('title');
+        $('<div class="tooltip"></div>').html(img).appendTo('body').fadeIn('slow');
+	}, function() {
+		// Hover out code
+		$(this).attr('title', $(this).data('tipText'));
+		$('.tooltip').remove();
+	}).mousemove(function(e) {
+		var mousex = e.pageX + 20; //Get X coordinates
+		var mousey = e.pageY + 10; //Get Y coordinates
+		$('.tooltip').css({ top: mousey, left: mousex })
+	});
+	
+	setInterval(function(){
+		 if($('.car').hasClass('car1'))
+		 {
+			 $('.car').removeClass('car1');
+		 }
+		 else
+		 {
+			 $('.car').addClass('car1');
+		 }
+		 
+	},300);
+ 
+ 	var angle = 0;
+	setInterval(function(){
+		  angle+=1;
+		 $(".h_world img").rotate(angle);
+	},1000);
+ 
+});
+	
+	
+
+
+	
+
+
+</script>
+<style>
+body{ margin:0; padding:0; font-family: 'Open Sans', sans-serif;}
+.header{ width:100%; background:#242424;position:fixed; top:0; z-index:1000;}
+.nav{ float:right; list-style:none;}
+.wrapper{ width:900px; margin:0 auto; position:relative;}
+.globe{ width:700px; margin:0 auto; background:url(images/globe.png) no-repeat right top; height:570px; position:relative; background-size:73%; top:100px; z-index:1;}
+.intro{ background:#000; width:100%; color:#fff; padding-bottom:100px;}
+.world{ padding-top:280px; font-size:36px; padding-left:20px;}
+.world span{ display:block; font-size:85px; text-transform:uppercase; line-height:65px; }
+.banner{ height:650px; background:#fff; padding-top:50px; position:relative; overflow:hidden; }
+.logo{ width:220px; float:left;;}
+.partner{ text-align:center; padding:20px 0; letter-spacing:12px;}
+.scroll{ text-align:center; font-size:18px; font-style:italic; color:#bebebe; margin-top:30px; }
+.scroll a{color:#bebebe; text-decoration:none; font-size:30px;}
+.ipad{ width:750px; margin:0 auto; position:relative; z-index:100; }
+.ipad img{filter:invert(50%);}
+.clear{ clear:both; margin:0; padding:0; line-height:0; height:0; font-size:0;}
+.text{ width:590px; margin:0 auto; position:absolute;  top:0px; left:82px; padding-top:120px; overflow:hidden; height:450px; margin-top:65px;}
+.weare{ margin-bottom:15px; position:absolute; left:-595px; z-index:20;}
+.hand{ position:absolute; top:600px; left:-80px; z-index:100}
+.professionals{ position:absolute; left:600px; top:205px; z-index:20;}
+.arrow1{ width:176px; position:absolute; left:220px; z-index:10; top:-530px;}
+.services{ background:#000; width:100%; height:650px; position:relative; overflow:hidden;}
+.services img{
+	opacity:0.1;}
+.tree{ height:650px; width:1000px; margin:0 auto; background:url(images/tree.png) no-repeat left bottom; opacity:0.1}
+.cloud1{left: 100px;position: absolute;top: 5px;z-index: 3;}
+.cloud2{left: 300px;position: absolute;top: 100px;z-index: 3;}
+.cloud3{left: 600px;position: absolute;top: 25px;z-index: 3;}
+.cloud4{left: 1000px;position: absolute;top: 75px;z-index: 3;}
+.cloud5{left: -200px;position: absolute;top: 85px;z-index: 3;}
+.cloud6{left: -300px;position: absolute;top: 60px;z-index: 3;}
+.nav ul{ margin:0; padding:0; float:right; list-style:none; text-decoration:none; padding-top:30px;}
+.nav ul li{ float:left;}
+.nav ul li a{ display:block; padding:0 15px; color:#a1a1a1; text-decoration:none;}
+.car{ position:absolute; bottom:0; left:750px; width:191px; background:url(images/car.png) no-repeat center top; height:72px; overflow:hidden; opacity:0.1}
+.car1{ background-position: center -72px;}
+.service_con{ position:relative; top:-500px; width:620px; float:right; color:#fff;  margin-top:50px;}
+.service_con h1{ font-weight:normal; font-size:90px; margin:0; margin-bottom:20px; padding:0;}
+.works h1{ font-weight:normal; font-size:79px; margin:0; margin-bottom:20px; padding:0;}
+.contact h1{ font-weight:normal; font-size:79px; margin:0; margin-bottom:20px; padding:0;}
+.service_con p{ padding-left:20px;}
+.view{ float:right;}
+.view a{ font-size:30px; color:#fff;}
+.works{ background:#fefefe; height:700px; overflow:hidden; width:100%; color:#000;}
+.works img{
+	    filter: invert(10%);
+	}
+.works_con{ position:relative;width:400px; float:left; color:#000; margin-top:100px;}
+.h_world{ width:745px; height:745px; position:absolute; right:-250px; bottom:-985px;}
+.samples{ position:absolute; top:100px; right:0; color:#fff; width:400px;}
+.samples ul{ margin:0; padding:0;  padding-top:10px;}
+.samples ul li{ float:left; margin-right:5px; list-style:none; margin-bottom:10px; }
+.samples ul li a{ display:block; background:#fff; text-align:center;color:#ef4e38; border-radius:35px; width:35px; height:35px; line-height:35px; text-decoration:none;}
+.contact{ background:#000; height:745px; color:#fff}
+
+.form{ width:460px; height:375px; padding:20px; background:url(images/form.png) no-repeat center top; position:absolute; right:-70px; top:50px;}
+.about{color:#000;text-align:center;position:absolute;bottom:215px;display:none;}
+.tooltip{background:#fff;border:solid 1px #ccc;padding:5px;width:150px;height:100px;overflow:hidden;position:absolute;z-index:9999;display:none;}
+.header-align{
+	justify-content:space-between;
+	display:flex;
+	color:#fff;
+	padding:15px 0;
+	align-items: center;
+	}
+	.con_con{
+		color:#fff!important;}
+	.con_con .ti{
+		font-size:30px; margin:50px 10px;
+		display:inline-block;
+		}
+.sec-lines {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	opacity: 1;
+	display:flex;
+	justify-content:space-between;
+}
+.line-item {
+	height: 100%;
+	box-sizing: border-box;
+	border-right: 1px solid hsla(0, 0%, 52%, 0.2);
+	height: 100%;
+	position: relative;
+}
+.line-item:nth-child(6):before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -2px;
+	width: 4px;
+	height: 30px;
+	animation: scroll3 8s ease-out infinite;
+	    background: #484848;
+}
+.line-item:nth-child(2):before, .line-item:nth-child(10):before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: -2px;
+	width: 4px;
+	height: 30px;
+	animation: scroll2 6s ease-out infinite;
+	    background: #484848;
+}
+.form{
+	text-align:center;
+	padding-top:300px;
+	color:#000;
+	
+	}
+@keyframes scroll3 {
+	0% {
+		opacity: 1;
+		top: 0
+	}
+	50% {
+		top: 50%
+	}
+	100% {
+		top: 100%;
+		opacity: 0.5;
+	}
+}
+@keyframes scroll2 {
+	0% {
+		opacity: 1;
+		bottom: 0
+	}
+	50% {
+		bottom: 50%
+	}
+	100% {
+		bottom: 100%;
+		opacity: 0.5;
+	}
+}
+
+</style>
+</head>
+
+<body>
+<div class="sec-lines">
+	<div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    	<div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+    <div class="line-item"></div>
+</div>
+<div class="header">
+<div class="wrapper d-flex  header-align">
+    	<div class="menu">
+        <i class="ti-align-justify"></i>
+        </div>
+        <div class="logo"><b>Emel</b> Digital</div>
+		<div class="contactus">
+        <i class="ti ti-email"></i>
+        
+        </div>
+        
+    </div>
+    </div>
+<div id="intro" class="intro">
+	<div class="wrapper">
+    	<div class="globe">
+        	<div class="world">Lets change the <span>WORLD</span></div>
+        </div><!--globe-->
+        <div class="clear"></div>
+        <div class="partner">The perfect design partner for you</div>
+        <div class="scroll"><a href="#"><i class="ti-angle-down"></i></a></div><!--scroll-->
+  </div>
+        
+    </div><!--intro-->
+    
+<div id="aboutus" class="banner">
+    	<div class="ipad"><img src="images/ipad.png"  alt="ipad" />
+        <div class="text">
+        	
+        	<div class="weare"><img src="images/we_are.png"  alt="we are" /></div><!--we are-->
+            <div class="professionals"><img src="images/professioanls.png"  alt="professionals" /></div>
+          <!--professional-->
+          <div class="about">We love what we do – we bring more to you than our knowledge and experience. We understand that your business is unique and your requirements are therefore unique also, therefore we take the time to get the details to ensure your platform is one of a kind</div>
+            <div class="arrow1"><img src="images/arrow1.png" width="176" height="155" alt="arrow" /></div>
+            
+        </div><!--text-->
+        <div class="hand"><img src="images/hand.png" width="236" alt="hand" /></div>
+        
+        </div>
+</div><!--banner-->
+
+<div id="services" class="services">
+<div class="car"></div>
+	<div class="cloud1"><img src="images/cloud1.png" alt="cloud1" /></div>
+  <div class="cloud2"><img src="images/cloud3.png" alt="cloud1" /></div>
+  <div class="cloud3"><img src="images/cloud3.png"  alt="cloud1" /></div>
+  <div class="cloud4"><img src="images/cloud4.png"  alt="cloud1" /></div>
+  <div class="cloud5"><img src="images/cloud1.png" alt="cloud1" /></div>
+  <div class="cloud6"><img src="images/cloud4.png"  alt="cloud1" /></div>
+<div class="tree"></div>
+<div class="wrapper">
+	<div class="service_con">
+    	<h1>Our Services </h1>
+        <p>Our team of web designers have the imagination, vision and expertise to help bring your ideas to life and showcase your brand so it matches your aspirations as well as standing out from the crowd.</p>
+        <ul>
+        	<li>Responsive web design and development</li>
+            <li>Mobile app</li>
+            <li>Branding and Logo Designing</li>
+            
+            
+        </ul>
+    </div>
+</div>
+</div>
+
+<div id="ourworks" class="works">
+<div class="wrapper">
+	<div class="works_con">
+    	<h1>Our Works </h1>
+        <p>Creating a brand that truly reflects your business is the most important visual element commissioned by a company.</p>
+
+<p>A well created brand is something that users will remember, improving recognition and hopefully foster repeat business. Bronco can help you create an identity and build something truly amazing that will convey your message perfectly.</p>
+       
+        
+    </div>
+    <div class="h_world"><img src="images/world.png" width="726" height="745" alt="world" /></div>
+    <div class="samples">
+    Mouse hover here to view our work samples
+    	<ul id="designs">
+        	<li><a href="images/hand.png" data-lightbox="portfolio" title="images/hand.png">1</a></li>
+            <li><a href="images/hand.png" data-lightbox="portfolio" title="images/hand.png">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">6</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<div id="contactus" class="contact">
+	<div class="wrapper">
+    <div class="works_con con_con">
+   	  <h1>Contact us </h1>
+        <p>Please feel free to contact us & we would be happy to assist you! Or you can follow us on the social media for latest updates </p>
+        <i class="ti ti-instagram"></i>
+        <i class="ti ti-skype"></i>
+        <i class="ti ti-linkedin"></i>
+        <i class="ti ti-facebook"></i>
+     
+    </div>
+    
+        <div class="form">
+        	<h2>Write to us</h2>
+            emeldigital@gmail.com
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>
